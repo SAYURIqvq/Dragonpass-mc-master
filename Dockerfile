@@ -1,0 +1,37 @@
+FROM python:3.11.13
+
+ENV TZ=Asia/Shanghai
+
+#RUN apt-get update && \
+#         DEBIAN_FRONTEND="noninteractive" \
+#         apt-get install -y --no-install-recommends \
+#         build-essential \
+#         cmake && \
+#         apt-get autoremove -y && \
+#         apt-get clean -y && \
+#    rm -rf /var/lib/apt/lists/*
+
+
+COPY ./data/fonts/* /tmp/fonts/
+RUN cp /tmp/fonts/* /usr/share/fonts
+# 设置pip镜像源
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN python -m pip install --upgrade pip
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+# 安装LibreOffice 用于 docx、excel、ppt 转 PDF
+RUN apt update
+RUN apt install libreoffice -y
+RUN apt install poppler-utils
+
+# 安装字体，防止中文乱码
+RUN apt install xfonts-utils -y
+RUN mkfontscale
+RUN mkfontdir
+RUN fc-cache -fv
+
+WORKDIR /app
+COPY ./ /app
+
+#CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
+CMD ["python", "main.py"]

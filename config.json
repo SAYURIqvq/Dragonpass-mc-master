@@ -1,0 +1,15 @@
+{
+    "allowed_keys": [
+        "sk-XQt24BbTw3jozxWOAvp5nPq1Uo28Erz9RKPAOGXTD63uA7y7",
+        "sk-culU0970u2UThhEea5hPGCC92GUpwsG9kwYzi1dRoL8niclk",
+        "sk-7lU2RNcJaQbZ2WBBbTtR2snRq6Fux7aWOlRnw2z5CMD0jW9v"
+    ],
+    "protected_routes": [
+        "/parse_file",
+        "/parse_upload_file",
+        "/parse_text",
+        "/df/chat",
+        "/v1/chat/itinerary/hybrid"
+    ],
+    "prefix": "sk-"
+}

@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mc-file-to-json-server:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    restart: "always"
+    environment:
+      TZ: Asia/Shanghai
+      DIFY_URL: https://ai-rag-uat.dragonpass.com.cn
+      DIFY_API_KEY: app-O9Df68EkriMZMgyVcKgz7bQo
+      ITINERARY_URL: https://wxbot.dragonpass.com.cn
+      DASHSCOPE_API_KEY: sk-68763db8f6254eefa4c61fa0d0d131a1
+      MODEL_URL: https://dashscope.aliyuncs.com/compatible-mode/v1
+    volumes:
+      - ./:/app
+      - ./api.log:/app/api.log
+    working_dir: /app
+    ports:
+      - 9040:8000
