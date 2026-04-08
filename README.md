@@ -1,6 +1,10 @@
 # MC - Document to Image Processing Service
 
+# MC - 文档转图像处理服务
+
 It is a Python-based document processing service that converts various document formats (PDF, DOCX, PPT, Excel) to images and extracts information using Vision-Language Models (VLM).
+
+这是一个基于 Python 的文档处理服务，用于将多种文档格式（PDF、DOCX、PPT、Excel）转换为图像，并结合视觉语言模型（Vision-Language Models, VLM）进行信息提取。
 
 ## Features
 
